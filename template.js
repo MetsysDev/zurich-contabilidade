@@ -30,6 +30,10 @@ class CardTemplate {
         let spansBusiness = [];
         for (const key in data) {
             if (data.hasOwnProperty(key)) {
+                if (key.indexOf('EMPTY') != -1) {
+                    continue;
+                }
+
                 if (this.isTypeCompany(key)) {
                     let value = !this.isClient(key)? `${key}: ${data[key]}`: data[key];
                     
@@ -89,15 +93,6 @@ class CardTemplate {
                 --danger-color: #f44336;
                 --border-width-template: 5px;
                 --border-color-template:#005e66;
-            }
-
-            html {
-                padding: 20px;
-            }
-
-            #view-card {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
             }
 
             .template-container {

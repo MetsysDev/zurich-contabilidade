@@ -53,6 +53,22 @@ $(function (event) {
         });
     });
 
+    $('#button-visualization').on('click', function (ev) {
+        let data = table.getSelections();
+
+        if (!validArray(data)) {
+            Mensagen.error('Adicione algum arquivo Excel!');
+            return;
+        }
+
+        $('#visualization-exportation').modal('show');
+        let card = new CardTemplate();
+        data.forEach(data => {
+            let cardMonted = card.mount(data);
+            ExportationReport.visualization(cardMonted);
+        });
+    });
+
     function validArray(data) {
         return Array.isArray(data) && data.length;
     }

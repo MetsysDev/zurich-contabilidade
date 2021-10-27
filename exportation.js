@@ -13,6 +13,7 @@ class ExportationReport {
     }
 
     static visualization(valueHtml) {
+        $('#view-card').empty();
         $('#view-card').append(valueHtml);
     }
 
